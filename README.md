@@ -1,4 +1,4 @@
-# prog-str-2E-VictorFlores
+# prog-str-2E-Main
 Repositorio del cuatrimestre
 
 autor: Flores Villegas Victor Alexander
