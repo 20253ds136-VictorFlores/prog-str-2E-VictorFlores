@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/HolaMundo01/HolaMundo01.iml" filepath="$PROJECT_DIR$/HolaMundo01/HolaMundo01.iml" />
-      <module fileurl="file://$PROJECT_DIR$/JavadocFloresVictor/JavadocFloresVictor.iml" filepath="$PROJECT_DIR$/JavadocFloresVictor/JavadocFloresVictor.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MergeWithConflict/MergeWithConflict.iml" filepath="$PROJECT_DIR$/MergeWithConflict/MergeWithConflict.iml" />
-      <module fileurl="file://$PROJECT_DIR$/MergeWithOutConflict/MergeWithOutConflict.iml" filepath="$PROJECT_DIR$/MergeWithOutConflict/MergeWithOutConflict.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JavadocFloresVillegas/JavadocFloresVillegas.iml" filepath="$PROJECT_DIR$/JavadocFloresVillegas/JavadocFloresVillegas.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/prog-str-2E-VictorFlores.iml" filepath="$PROJECT_DIR$/.idea/prog-str-2E-VictorFlores.iml" />
     </modules>
   </component>
