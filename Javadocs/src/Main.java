@@ -19,16 +19,19 @@ public class Main {
 
     }
 
-    /** * Metodo que retorna un valor capturado por terminal * @param sc -> previamente declarado en main * @param mensaje -> es un parametro * @return -> double */ public static double obtenerDouble(Scanner sc, String mensaje){
+    /** * Metodo que retorna un valor capturado por terminal * @param sc -> previamente declarado en main * @param mensaje -> es un parametro * @return -> double */
+    public static double obtenerDouble(Scanner sc, String mensaje){
         System.out.println(mensaje);
         return sc.nextDouble();
     }
 
-    /** * Metodo que devuelve el IMC con formula -> peso/altura² * @param pesoKg -> expresado en Kilos * @param alturaM -> expresado en Metros * @return -> double de IMC */ public static double calcularIMC(double pesoKg, double alturaM){
+    /** * Metodo que devuelve el IMC con formula -> peso/altura² * @param pesoKg -> expresado en Kilos * @param alturaM -> expresado en Metros * @return -> double de IMC */
+    public static double calcularIMC(double pesoKg, double alturaM){
         return pesoKg/(alturaM*alturaM);
     }
 
-    /** * Metodo que clasifica IMC segun reglas de negocio establecidas * Bajo-> IMC<18.5 * @param IMC -> Previamente calculado por el sistema * @return -> String de clasficacion */ public static String obtenerClasificicacionIMC(double IMC){
+    /** * Metodo que clasifica IMC segun reglas de negocio establecidas * Bajo-> IMC<18.5 * @param IMC -> Previamente calculado por el sistema * @return -> String de clasficacion */
+    public static String obtenerClasificicacionIMC(double IMC){
         if(IMC<CLASIFICACION_BAJA) return "Peso Bajo";
         else if(IMC<CLASIFICACION_MEDIA) return "Medio";
         else if(IMC<CLASIFICACION_ALTA) return "Sobre peseo";
