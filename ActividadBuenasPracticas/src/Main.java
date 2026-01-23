@@ -18,7 +18,7 @@ public class Main{
      */
     public static int pedirEntero(Scanner sc, String mensaje){
         System.out.println(mensaje);
-        return sc.nextInt() ;
+        return sc.nextInt();
     }
 
     /**
