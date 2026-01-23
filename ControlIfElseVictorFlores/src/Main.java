@@ -24,6 +24,12 @@ public class Main {
         return sc.nextInt();
     }
 
+    /**
+     *Pide al usuario que ingrese una edad valida que este en un rango aceptado
+     * @param sc -> objeto utilizado para leer la respuesta del usuario
+     * @param mensaje -> mensaje que se mostrara para pedir los datos
+     * @return la edad del usuario, mientras este en dicho rango
+     */
     public static int pedirEdad(Scanner sc, String mensaje) {
         System.out.println(mensaje);
         int edad = sc.nextInt();
@@ -35,6 +41,12 @@ public class Main {
         return edad;
     }
 
+    /**
+     * Comparacion de edades para calcular tarifas
+     * @param edad -> edad de la persona
+     * @param esEstudiante -> Indica si la persona es estudiante
+     * @return la tarifa correspondiente
+     */
     public static int calcularTarifa(int edad, boolean esEstudiante) {
         if (edad < 12) {
             TARIFA = 50;
