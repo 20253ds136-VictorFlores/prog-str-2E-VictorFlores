@@ -18,21 +18,21 @@ public class ActividadSwitchCalculadora {
                 variableA = obtenerDouble(sc, "Ingresa un valor a la variableA: ");
                 variableB = obtenerDouble(sc, "Ingresa un valor a la variableB: ");
                 double respuestaSuma = calcularOperacion(variableA, variableB);
-                System.out.println("El resultado de la suma es: "+respuestaSuma);
+                System.out.println("La operacion escogida fue SUMA, A = "+variableA+", B = "+variableB+" el resultado de la suma es: "+respuestaSuma);
                 break;
             case 2:
                 System.out.println("Calculadora de Resta");
                 variableA = obtenerDouble(sc, "Ingresa un valor a la variableA: ");
                 variableB = obtenerDouble(sc, "Ingresa un valor a la variableB: ");
                 double respuestaResta = calcularOperacion(variableB, variableA);
-                System.out.println("El resultado de la resta es: "+respuestaResta);
+                System.out.println("La operacion escogida fue RESTA, A = "+variableA+", B = "+variableB+" el resultado de la resta es: "+respuestaResta);
                 break;
             case 3:
                 System.out.println("Calculadora de Multiplicacion");
                 variableA = obtenerDouble(sc, "Ingresa un valor a la variableA: ");
                 variableB = obtenerDouble(sc, "Ingresa un valor a la variableB: ");
                 double respuestaMultiplicacion = calcularOperacion(variableB, variableA);
-                System.out.println("El resultado de la multiplicacion es: "+respuestaMultiplicacion);
+                System.out.println("La operacion escogida fue MULTIPLICACION, A = "+variableA+", B = "+variableB+" el resultado de la multiplicacion es: "+respuestaMultiplicacion);
                 break;
             case 4:
                 System.out.println("Calculadora de Division");
@@ -43,7 +43,7 @@ public class ActividadSwitchCalculadora {
                     break;
                 }
                 double respuestaDivision = calcularOperacion(variableB, variableA);
-                System.out.println("El resultado de la division es: "+respuestaDivision);
+                System.out.println("La operacion escogida fue DIVISION, A = "+variableA+", B = "+variableB+" el resultado de la division es: "+respuestaDivision);
                 break;
             default:
                 System.out.println("Opcion invalida");
