@@ -28,14 +28,14 @@ public class ActividadSwitchCalculadora {
                 System.out.println("El resultado de la resta es: "+respuestaResta);
                 break;
             case 3:
-                System.out.println("Calculadora de Area de Multiplicacion");
+                System.out.println("Calculadora de Multiplicacion");
                 variableA = obtenerDouble(sc, "Ingresa un valor a la variableA: ");
                 variableB = obtenerDouble(sc, "Ingresa un valor a la variableB: ");
                 double respuestaMultiplicacion = calcularOperacion(variableB, variableA);
                 System.out.println("El resultado de la multiplicacion es: "+respuestaMultiplicacion);
                 break;
             case 4:
-                System.out.println("Calculadora de Area de Rectangulo");
+                System.out.println("Calculadora de Division");
                 variableA = obtenerDouble(sc, "Ingresa un valor a la variableA: ");
                 variableB = obtenerDouble(sc, "Ingresa un valor a la variableB: ");
                 if (variableB == 0){
@@ -46,7 +46,7 @@ public class ActividadSwitchCalculadora {
                 System.out.println("El resultado de la division es: "+respuestaDivision);
                 break;
             default:
-                System.out.println("Opcion incorrecta");
+                System.out.println("Opcion invalida");
                 break;
         }
     }
@@ -74,7 +74,7 @@ public class ActividadSwitchCalculadora {
         } else if (opcion == 2) {
             return variableA - variableB;
         } else if (opcion == 3) {
-            return variableA * variableA;
+            return variableA * variableB;
         }else {
             return  variableA / variableB;
         }
