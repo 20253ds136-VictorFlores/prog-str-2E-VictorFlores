@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ActividadBuenasPracticas/ActividadBuenasPracticas.iml" filepath="$PROJECT_DIR$/ActividadBuenasPracticas/ActividadBuenasPracticas.iml" />
       <module fileurl="file://$PROJECT_DIR$/ControlIfElseVictorFlores/ControlIfElseVictorFlores.iml" filepath="$PROJECT_DIR$/ControlIfElseVictorFlores/ControlIfElseVictorFlores.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ControlSwitchVictorFlores/ControlSwitchVictorFlores.iml" filepath="$PROJECT_DIR$/ControlSwitchVictorFlores/ControlSwitchVictorFlores.iml" />
       <module fileurl="file://$PROJECT_DIR$/HolaMundo01/HolaMundo01.iml" filepath="$PROJECT_DIR$/HolaMundo01/HolaMundo01.iml" />
       <module fileurl="file://$PROJECT_DIR$/JavadocFloresVictor/JavadocFloresVictor.iml" filepath="$PROJECT_DIR$/JavadocFloresVictor/JavadocFloresVictor.iml" />
       <module fileurl="file://$PROJECT_DIR$/Javadocs/Javadocs.iml" filepath="$PROJECT_DIR$/Javadocs/Javadocs.iml" />
