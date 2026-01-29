@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ActividadBuenasPracticas/ActividadBuenasPracticas.iml" filepath="$PROJECT_DIR$/ActividadBuenasPracticas/ActividadBuenasPracticas.iml" />
+      <module fileurl="file://$PROJECT_DIR$/AdivinaElNumero/AdivinaElNumero.iml" filepath="$PROJECT_DIR$/AdivinaElNumero/AdivinaElNumero.iml" />
       <module fileurl="file://$PROJECT_DIR$/ControlIfElseVictorFlores/ControlIfElseVictorFlores.iml" filepath="$PROJECT_DIR$/ControlIfElseVictorFlores/ControlIfElseVictorFlores.iml" />
       <module fileurl="file://$PROJECT_DIR$/ControlSwitchVictorFlores/ControlSwitchVictorFlores.iml" filepath="$PROJECT_DIR$/ControlSwitchVictorFlores/ControlSwitchVictorFlores.iml" />
       <module fileurl="file://$PROJECT_DIR$/HolaMundo01/HolaMundo01.iml" filepath="$PROJECT_DIR$/HolaMundo01/HolaMundo01.iml" />
