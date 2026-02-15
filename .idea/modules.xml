@@ -15,6 +15,7 @@
       <module fileurl="file://$PROJECT_DIR$/MergeWithConflict/MergeWithConflict.iml" filepath="$PROJECT_DIR$/MergeWithConflict/MergeWithConflict.iml" />
       <module fileurl="file://$PROJECT_DIR$/MergeWithOutConflict/MergeWithOutConflict.iml" filepath="$PROJECT_DIR$/MergeWithOutConflict/MergeWithOutConflict.iml" />
       <module fileurl="file://$PROJECT_DIR$/PersonasCRUD/PersonasCRUD.iml" filepath="$PROJECT_DIR$/PersonasCRUD/PersonasCRUD.iml" />
+      <module fileurl="file://$PROJECT_DIR$/PersonasCRUD2/PersonasCRUD2.iml" filepath="$PROJECT_DIR$/PersonasCRUD2/PersonasCRUD2.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/prog-str-2E-VictorFlores.iml" filepath="$PROJECT_DIR$/.idea/prog-str-2E-VictorFlores.iml" />
     </modules>
   </component>

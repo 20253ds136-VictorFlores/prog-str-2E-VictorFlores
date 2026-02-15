@@ -9,7 +9,7 @@ public class personasCrud {
         int opcion;
         do {
             System.out.println("\n--Menu Personas CRUD simple--");
-            System.out.println("1.-Darse de alta \n2.-Buscar por ID \n3.-Baja logica por ID \n4.-Listar activas \n5.-Actualizar nombre por ID (solo activas) \n0.-Salir");
+            System.out.println("1.-Darse de alta \n2.-Buscar \n3.-Baja logica por ID \n4.-Lista de activas \n5.-Actualizar nombre \n0.-Salir");
             System.out.print("Opcion: ");
             opcion = sc.nextInt();
             sc.nextLine();
