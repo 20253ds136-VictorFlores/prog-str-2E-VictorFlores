@@ -2,7 +2,6 @@ import java.util.Scanner;
 
 public class Personas2 {
     static PersonaCRUD[] alumnos = new PersonaCRUD[25];
-    public static int CONTADOR = 0;
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -22,21 +21,22 @@ public class Personas2 {
 
             switch (opcion) {
                 case 1:
-                    alta(sc);
+                    alta(alumnos,sc);
                     break;
                 case 2:
-                    buscar(sc);
+                    buscar(alumnos,sc);
                     break;
                 case 3:
-                    actualizarPromedio(sc);
+                    actualizarPromedio(alumnos,sc);
                     break;
                 case 4:
-                    baja(sc);
+                    baja(alumnos,sc);
                     break;
                 case 5:
-                    listarActivos();
+                    listarActivos(alumnos);
                     break;
-                case 6: reportes();
+                case 6:
+                    reportes(alumnos);
                     break;
                 case 0:
                     System.out.println("Saliendo..., hasta luego");
@@ -48,137 +48,241 @@ public class Personas2 {
         } while (opcion != 0);
     }
 
-    static void alta(Scanner sc) {
-        if (CONTADOR >= alumnos.length) {
-            System.out.println("No hay espacio disponible.");
-            return;
-        }
-        System.out.print("Ingrese ID: ");
-        int id = sc.nextInt();
-        sc.nextLine();
-        if (id <= 0) {
-            System.out.println("ID invalido.");
-            return;
-        }
-        if (idExistente(id)) {
-            System.out.println("ID repetido, no se puede registrar.");
-            return;
-        }
-        System.out.print("Ingrese nombre: ");
-        String nombre = sc.nextLine().trim();
-        if (nombre.isEmpty()) {
-            System.out.println("Nombre invalido.");
-            return;
-        }
-        System.out.print("Ingrese promedio (0-10): ");
-        double promedio = sc.nextDouble();
-        sc.nextLine();
-        if (promedio < 0 || promedio > 10) {
-            System.out.println("Promedio invalido.");
-            return;
-        }
-        alumnos[CONTADOR++] = new PersonaCRUD();
-        System.out.println("Alumno registrado con exito.");
-    }
-
-    static void buscar(Scanner sc) {
-        System.out.print("Ingrese ID a buscar: ");
-        int id = sc.nextInt();
-        sc.nextLine();
-        PersonaCRUD a = obtenerAlumno(id);
-        if (a != null && a.isActivo()) {
-            System.out.println("Encontrado: " + a);
-        } else {
-            System.out.println("No encontrado o inactivo.");
-        }
-    }
-
-    static void actualizarPromedio(Scanner sc) {
-        System.out.print("Ingrese ID a actualizar: ");
-        int id = sc.nextInt();
-        sc.nextLine();
-        PersonaCRUD a = obtenerAlumno(id);
-        if (a != null && a.isActivo()) {
-            System.out.print("Nuevo promedio (0-10): ");
-            double promedio = sc.nextDouble();
-            sc.nextLine();
-            if (promedio < 0 || promedio > 10) {
-                System.out.println("Promedio invalido.");
-                return;
-            }
-            a.setPromedio(promedio);
-            System.out.println("Promedio actualizado.");
-        } else {
-            System.out.println("No encontrado o inactivo.");
-        }
-    }
-
-    static void baja(Scanner sc) {
-        System.out.print("Ingrese ID a dar de baja: ");
-        int id = sc.nextInt();
-        sc.nextLine();
-        PersonaCRUD a = obtenerAlumno(id);
-        if (a != null && a.isActivo()) {
-            a.setActivo(false);
-            System.out.println("Alumno ya dado de baja.");
-        } else {
-            System.out.println("No encontrado o ya inactivo.");
-        }
-    }
-
-    static void listarActivos() {
-        System.out.println("---Alumnos activos---");
-        for (int i = 0; i < CONTADOR; i++) {
-            if (alumnos[i].isActivo()) {
-                System.out.println(alumnos[i]);
+    /**
+     * Metodo para validar el promedio
+     * @param sc -> Declarado en Main
+     * @param mensaje -> Envia mensaje a terminal
+     * @return -> double
+     */
+    public static double validarDouble(Scanner sc, String mensaje){
+        double input;
+        while (true){
+            System.out.println(mensaje);
+            if (sc.hasNextDouble()){
+                input=sc.nextDouble();
+                if (input>=0 && input<=10){
+                    return input;
+                }else {
+                    System.out.println("Promedio fuera de rango");
+                }
+            }else {
+                System.out.println("Valor ingresado no valido");
+                sc.next();
             }
         }
     }
 
-    static void reportes() {
-        if (CONTADOR == 0) {
-            System.out.println("No hay alumnos registrados.");
-            return;
-        }
-        double suma = 0;
-        int activos = 0;
-        PersonaCRUD mayor = null;
-        PersonaCRUD menor = null;
-        int sobresalientes = 0;
-
-        for (int i = 0; i < CONTADOR; i++) {
-            PersonaCRUD a = alumnos[i];
-            if (a.isActivo()) {
-                activos++;
-                suma += a.getPromedio();
-                if (mayor == null || a.getPromedio() > mayor.getPromedio()) mayor = a;
-                if (menor == null || a.getPromedio() < menor.getPromedio()) menor = a;
-                if (a.getPromedio() >= 8.0) sobresalientes++;
+    /**
+     * Metodo para validar el ID
+     * @param sc -> declarado en Main
+     * @param mensaje -> es un parámetro (Envía mensaje a terminal)
+     * @return -> int
+     */
+    public static int validarID(Scanner sc, String mensaje){
+        int input;
+        while (true){
+            System.out.println(mensaje);
+            if (sc.hasNextInt()){
+                input=sc.nextInt();
+                return input;
+            }else {
+                System.out.println("Valor no numerico");
+                sc.next();
             }
         }
-
-        if (activos == 0) {
-            System.out.println("No hay alumnos activos.");
-            return;
-        }
-
-        System.out.println("Promedio general de activos: " + (suma / activos));
-        System.out.println("PersonaCRUD con mayor promedio: " + mayor);
-        System.out.println("PersonaCRUD con menor promedio: " + menor);
-        System.out.println("Alumnos con promedio >= 8.0: " + sobresalientes);
     }
 
-    static boolean idExistente(int id) {
-        for (int i = 0; i < CONTADOR; i++) {
-            if (alumnos[i].getId() == id) return true;
+    /**
+     * Metodo para dar de alta y llenar el arreglo
+     * @param alumnos -> arreglo
+     * @param sc -> Declarado en Main
+     */
+    public static void alta(PersonaCRUD[] alumnos, Scanner sc){
+        String nombre="";
+        int id=validarID(sc,"Ingresa el ID de la persona: ");
+        if (id<=0){
+            System.out.println("No se admiten valor menores o iguales a 0");
+            return;
+        } else if (verificarID(id, alumnos)) {
+            System.out.println("ID no valido, ya existe");
+            return;
+        } else {
+            System.out.println("Ingresa el nombre de la persona: ");
+            nombre=sc.next();
+            if (nombre.isBlank()){
+                System.out.println("No se admite un nombre vacio");
+                sc.next();
+            }
+        }
+        double promedio=validarDouble(sc, "Ingresa el promedio del alumno: ");
+        int indiceInsercion=obtenerIndice(alumnos);
+        if (indiceInsercion==-1){
+            System.out.println("El arreglo esta lleno");
+            return;
+        }
+        PersonaCRUD alumno1=new PersonaCRUD(id,nombre ,promedio);
+        alumnos[indiceInsercion]=alumno1;
+        System.out.println("\n"+alumno1.toString());
+    }
+
+
+    /**
+     * Metodo para verificar que un valor dentro del arreglo no exista
+     * @param id -> int
+     * @param alumnos -> arreglo
+     * @return -> boolean
+     */
+    public static boolean verificarID(int id, PersonaCRUD[] alumnos){
+        for (PersonaCRUD alumno : alumnos) {
+            if(alumno!=null && alumno.getId()==id) {
+                return true;
+            }
         }
         return false;
     }
 
-    static PersonaCRUD obtenerAlumno(int id) {
-        for (int i = 0; i < CONTADOR; i++) {
-            if (alumnos[i].getId() == id) return alumnos[i];
+
+    /**
+     * Metodo para verificar que un espacio en el arreglo este vacio, o que no este lleno
+     * @param alumnos -> arreglo
+     * @return -> index (int)
+     */
+    public static int obtenerIndice(PersonaCRUD[] alumnos){
+        for (int i = 0; i < alumnos.length; i++) {
+            if(alumnos[i]==null){
+                return i;
+            }
         }
-        return null;
+        return -1;
+    }
+
+
+    /**
+     * Metodo para buscar un ID e imprimir
+     * @param alumnos -> arreglo
+     * @param sc -> declarado en Main
+     */
+    public static void buscar(PersonaCRUD[] alumnos, Scanner sc){
+        int id=validarID(sc,"Ingresa el ID a buscar:");
+        boolean idValida=verificarID(id,alumnos);
+        if(idValida) {
+            for (PersonaCRUD alumno : alumnos) {
+                if (alumno != null) {
+                    if(alumno.isActivo()) {
+                        if (alumno.getId() == id) {
+                            System.out.println(alumno.toString());
+                        }
+                    }else {
+                        System.out.println("ID dado de baja");
+                    }
+                }
+            }
+        }else {
+            System.out.println("ID no encontrado");
+        }
+    }
+
+    /**
+     * Metodo para cambiar si es activo
+     * @param alumnos -> arreglo
+     * @param sc -> declarado en Main
+     */
+    public static void baja(PersonaCRUD [] alumnos,Scanner sc){
+        int id=validarID(sc,"Ingresa el ID para dar de baja:");
+        boolean IDValida=verificarID(id,alumnos);
+        if(IDValida) {
+            for (PersonaCRUD alumno : alumnos) {
+                if (alumno != null ) {
+                    if(alumno.isActivo()) {
+                        if (alumno.getId() == id) {
+                            alumno.setActivo(false);
+                            System.out.println(alumno.toString());
+                        }
+                    }else {
+                        System.out.println("ID dado de baja");
+                    }
+                }
+            }
+        }else {
+            System.out.println("ID no encontrado");
+        }
+    }
+
+
+    /**
+     * Metodo para imprimir los datos que están dentro del arreglo, solo si un parametro boolean es (true)
+     *
+     * @param alumnos -> arreglo
+     */
+    public static void listarActivos(PersonaCRUD[] alumnos){
+        for (PersonaCRUD alumno : alumnos){
+            if (alumno!=null && alumno.isActivo() ){
+                System.out.println(alumno.toString());
+            }
+        }
+    }
+
+
+    /**
+     * Metodo para cambiar el valor de una variable double dentro del arreglo
+     * @param alumnos -> arreglo
+     * @param sc -> declarado en Main
+     */
+    public static void actualizarPromedio(PersonaCRUD[] alumnos, Scanner sc){
+        int id=validarID(sc,"Ingresa el ID del alumno a cambiar el promedio:");
+        boolean validateID=verificarID(id, alumnos);
+        if (validateID){
+            for(PersonaCRUD alumno : alumnos){
+                if (alumno!=null){
+                    if (alumno.isActivo()){
+                        if (alumno.getId() == id) {
+                            double  prom=validarDouble(sc,"Ingresa el nuevo promedio: ");
+                            alumno.setPromedio(prom);
+                            System.out.println(alumno.toString());
+                        }
+                    }else {
+                        System.out.println("ID dado de baja");
+                    }
+                }
+            }
+        }else {
+            System.out.println("ID no encontrado");
+        }
+    }
+
+    /**
+     * Metodo para imprimir el reporte
+     * @param alumnos -> arreglo
+     */
+    public static void reportes(PersonaCRUD[] alumnos){
+        double sumProm = 0;
+        int count = 0;
+        int countMayor8 = 0;
+        PersonaCRUD menor = null;
+        PersonaCRUD mayor = null;
+        for(PersonaCRUD alumno : alumnos ){
+            if(alumno!=null && alumno.isActivo()){
+                sumProm+=alumno.getPromedio();
+                count++;
+                if(mayor==null || alumno.getPromedio()> mayor.getPromedio()) {
+                    mayor=alumno;
+                }
+                if(menor==null || alumno.getPromedio()<menor.getPromedio()){
+                    menor=alumno;
+                }
+                if (alumno.getPromedio()>=8){
+                    countMayor8++;
+                }
+            }
+        }
+        if(count>0){
+            double averageGeneral=sumProm/count;
+            System.out.println("\nPromedio General de Alumnos Activos: "+averageGeneral);
+            System.out.println("\nAlumno con el promedio mas alto"+mayor.toString());
+            System.out.println("\nAlumno con el promedio mas bajo"+menor.toString());
+            System.out.println("\nNumero de alumnos con promedio mayor o igual que 8: "+countMayor8);
+        }else {
+            System.out.println("No hay alumnos activos");
+        }
     }
 }
