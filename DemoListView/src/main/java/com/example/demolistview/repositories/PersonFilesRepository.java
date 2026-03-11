@@ -1,9 +1,8 @@
 package com.example.demolistview.repositories;
 
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.*;
 import java.util.List;
 
 public class PersonFilesRepository {
@@ -21,5 +20,8 @@ public class PersonFilesRepository {
         return Files.readAllLines(filetPath);
     }
 
-
+    public void appendNewLine(String Line) throws IOException {
+        ensureFile();
+        Files.writeString(filetPath,Line+System.lineSeparator(), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+    }
 }
