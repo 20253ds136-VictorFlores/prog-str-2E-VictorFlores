@@ -8,38 +8,47 @@ import java.util.List;
 
 public class PersonService {
 
-    PersonFilesRepository repo = new PersonFilesRepository();
+    private final PersonFilesRepository repo = new PersonFilesRepository();
 
     public List<String> loadDataForListView() throws IOException {
-
         List<String> lines = repo.readAllLines();
         List<String> result = new ArrayList<>();
 
-        for (String line: lines){
-            if (line==null || line.isBlank()) continue;
-
+        for (String line : lines) {
+            if (line == null || line.isBlank()) continue;
             String[] parts = line.split(",");
-            String name = parts[0];
-            String email = parts[1];
-
-            result.add("Nombre: "+name + " - " + email);
+            if (parts.length < 3) continue;
+            String name = parts[0].trim();
+            String email = parts[1].trim();
+            String edadStr = parts[2].trim();
+            if (!edadStr.matches("\\d+")) {
+                System.out.println("Edad inválida en línea: " + line);
+                continue;
+            }
+            int edad = Integer.parseInt(edadStr);
+            result.add("Nombre: " + name + " - " + email + " - " + edad);
         }
 
         return result;
     }
 
-    public void addPerson(String name, String email) throws IOException {
-        validate(name,email);
-        repo.appendNewLine(name+" , "+email);
+    public void addPerson(String name, String email, int edad) throws IOException {
+        validate(name, email, edad);
+        repo.appendNewLine(name + "," + email + "," + edad);
     }
 
-    private void validate(String name, String email){
-        if (name==null || name.isBlank() || name.length()<3){
+    private void validate(String name, String email, int edad) {
+        if (name == null || name.isBlank() || name.length() < 3) {
             throw new IllegalArgumentException("El nombre es incorrecto");
         }
-        String en=(email==null) ? "" : email.trim();
-        if (en.isBlank() || !en.contains("@") || !en.contains(".")){
+
+        String en = (email == null) ? "" : email.trim();
+        if (en.isBlank() || !en.contains("@") || !en.contains(".")) {
             throw new IllegalArgumentException("El email es incorrecto");
+        }
+
+        if (edad < 18 || edad > 120) {
+            throw new IllegalArgumentException("La edad no cumple con el rango permitido (18-120)");
         }
     }
 }

@@ -7,10 +7,13 @@ import java.util.List;
 
 public class PersonFilesRepository {
 
-    private final Path filetPath = Paths.get("data","persons.csv");
+    private final Path filetPath = Paths.get("data", "persons.csv");
 
     private void ensureFile() throws IOException {
-        if(Files.notExists(filetPath)){
+        if (Files.notExists(filetPath.getParent())) {
+            Files.createDirectories(filetPath.getParent());
+        }
+        if (Files.notExists(filetPath)) {
             Files.createFile(filetPath);
         }
     }
@@ -20,8 +23,9 @@ public class PersonFilesRepository {
         return Files.readAllLines(filetPath);
     }
 
-    public void appendNewLine(String Line) throws IOException {
+    public void appendNewLine(String line) throws IOException {
         ensureFile();
-        Files.writeString(filetPath,Line+System.lineSeparator(), StandardCharsets.UTF_8, StandardOpenOption.APPEND);
+        Files.writeString(filetPath, line + System.lineSeparator(),
+                StandardCharsets.UTF_8, StandardOpenOption.APPEND);
     }
 }
