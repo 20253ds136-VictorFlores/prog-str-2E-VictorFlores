@@ -1,4 +1,4 @@
-package com.example.demolistview;
+package com.example.demolistview2;
 
 import javafx.application.Application;
 

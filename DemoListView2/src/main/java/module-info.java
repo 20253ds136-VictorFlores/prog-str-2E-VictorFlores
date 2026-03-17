@@ -1,15 +1,18 @@
-module com.example.demolistview {
+module com.example.demolistview2 {
     requires javafx.controls;
     requires javafx.fxml;
-    requires java.desktop;
 
 
-    opens com.example.demolistview to javafx.fxml;
-    opens com.example.demolistview.controllers to javafx.fxml;
-    opens com.example.demolistview.services to javafx.fxml;
-    opens com.example.demolistview.repositories to javafx.fxml;
-    exports com.example.demolistview;
-    exports com.example.demolistview.services;
-    exports com.example.demolistview.controllers;
-    exports com.example.demolistview.repositories;
+    opens com.example.demolistview2 to javafx.fxml;
+    opens com.example.demolistview2.controllers to javafx.fxml;
+    opens com.example.demolistview2.services to javafx.fxml;
+    opens com.example.demolistview2.repositories to javafx.fxml;
+    exports com.example.demolistview2;
+    exports com.example.demolistview2.controllers;
+    exports com.example.demolistview2.services;
+    exports com.example.demolistview2.repositories;
+
+
+
+
 }

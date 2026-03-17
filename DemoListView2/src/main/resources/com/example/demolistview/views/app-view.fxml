@@ -3,9 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demolistview.controllers.AppControllers">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demolistview2.controllers.AppControllers">
    <children>
       <Label text="Lista de Personas" />
       <GridPane>
@@ -19,18 +17,20 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label text="Nombre" />
+            <Label text="Name" />
             <Label text="Email" GridPane.rowIndex="1" />
-            <TextField fx:id="txtName" GridPane.columnIndex="1" />
-            <TextField fx:id="txtEmail" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+            <TextField fx:id="txtName" promptText="Name" GridPane.columnIndex="1" />
+            <TextField fx:id="txtEmail" promptText="Email" GridPane.columnIndex="1" GridPane.rowIndex="1" />
             <Label text="Edad" GridPane.rowIndex="2" />
-            <TextField fx:id="txtEdad" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            <TextField fx:id="txtEdad" promptText="Edad" GridPane.columnIndex="1" GridPane.rowIndex="2" />
          </children>
       </GridPane>
       <HBox prefHeight="100.0" prefWidth="200.0">
          <children>
             <Button mnemonicParsing="false" onAction="#onReload" text="Recargar" />
             <Button mnemonicParsing="false" onAction="#onAdd" text="Agregar" />
+            <Button mnemonicParsing="false" onAction="#onUpdate" text="Actualizar" />
+            <Button mnemonicParsing="false" onAction="#onDelete" text="Borrar" />
          </children>
       </HBox>
       <ListView fx:id="listView" prefHeight="200.0" prefWidth="200.0" />

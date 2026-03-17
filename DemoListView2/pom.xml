@@ -5,9 +5,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>DemoListView</artifactId>
+    <artifactId>DemoListView2</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>DemoListView</name>
+    <name>DemoListView2</name>
+
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -60,7 +61,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.example.demolistview/com.example.demolistview.HelloApplication</mainClass>
+                            <mainClass>com.example.demolistview/src.main.java.com.example.demolistview2.HelloApplication</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
