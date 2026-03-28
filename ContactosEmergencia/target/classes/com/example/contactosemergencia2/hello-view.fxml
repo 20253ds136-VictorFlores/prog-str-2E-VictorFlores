@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.contactosemergencia2.HelloController">
+    <children>
+        <GridPane prefHeight="150.0" prefWidth="600.0">
+            <columnConstraints>
+                <ColumnConstraints prefWidth="100.0" />
+                <ColumnConstraints prefWidth="100.0" />
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints prefHeight="30.0" />
+                <RowConstraints prefHeight="30.0" />
+            </rowConstraints>
+            <children>
+                <Label text="Nombre" />
+                <TextField fx:id="txtNombre" GridPane.columnIndex="1" />
+                <Label text="Teléfono" GridPane.rowIndex="1" />
+                <TextField fx:id="txtTel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                <Label text="Parentesco" GridPane.rowIndex="2" />
+                <ComboBox fx:id="cbRelacion" prefWidth="150.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+            </children>
+        </GridPane>
+        <HBox spacing="10" alignment="CENTER" prefHeight="45.0" prefWidth="600.0">
+            <children>
+                <Button text="Agregar" onAction="#onAdd" />
+                <Button text="Buscar" onAction="#onBuscar" />
+                <Button text="Actualizar" onAction="#onUpdate" />
+                <Button text="Limpiar" onAction="#onClear" />
+                <Button text="Borrar" onAction="#onDelete" />
+            </children>
+        </HBox>
+        <ListView fx:id="contactoListView" prefHeight="200.0" prefWidth="600.0" />
+        <Label fx:id="lblMensaje" text="" />
+    </children>
+</VBox>
